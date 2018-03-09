@@ -1,3 +1,14 @@
+Pretrained Densenet models for TensorFlow
+==================
+
+This repository is a fork of [pudae/tensorflow-densenet](https://github.com/pudae/tensorflow-densenet),
+and has been adapted to generate a frozen protobuf for these Densenet Models to be used for robustness evaluation.
+For more details see [CLEVER: A Robustness Metric For Deep Neural Networks](https://github.com/huanzhang12/CLEVER).
+
+
+To generate the frozen protobuf, following the steps below.
+
+
 Download Models
 --------------
 
@@ -22,10 +33,6 @@ without an additional background class. Some ImageNet models are trained with
 
 Freeze graph
 ---------------
-
-Need to have a compiled Tensorflow at ../tensorflow-1.5.0
-
-compiled by `bazel build tensorflow/python/tools/freeze_graph`
 
 ```
 python3 freeze_graph.py --input_graph=densenet121_k32.pb --input_checkpoint=models/121/tf-densenet121.ckpt --input_binary=true --output_graph=densenet121_k32_frozen.pb --output_node_names=densenet121/predictions/Reshape_1
@@ -65,4 +72,3 @@ AddModel('densenet161_k48', 'http://jaina.cs.ucdavis.edu/datasets/adv/imagenet/d
          'densenet161_k48_frozen.pb', 224, 'labels.txt', 'input:0', 
          'densenet161/predictions/Reshape:0', 'densenet161/predictions/Reshape_1:0', 'densenet161/predictions/Shape:0') 
 ```
-
