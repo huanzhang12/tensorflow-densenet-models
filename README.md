@@ -18,7 +18,7 @@ cd models
 cd ..
 ```
 
-Expert graph
+Export graph
 --------------
 
 ```
